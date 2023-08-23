@@ -44,3 +44,9 @@ public class BaseRemoteService: RemoteService {
         return try coordinator.dataTaskPublisher(for: request, decoder: decoder)
     }
 }
+
+public extension BaseRemoteService {
+    func url(for endpoint: RemoteEndpoint) throws -> URL {
+        try remoteAPI.url(endpoint)
+    }
+}
