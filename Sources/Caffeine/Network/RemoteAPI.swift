@@ -11,8 +11,16 @@ public struct RemoteAPI {
     let scheme: String
     let host: String
     var port: Int?
-    var cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy
-    var timeOutInterval: TimeInterval = 10.0
+    var cachePolicy: URLRequest.CachePolicy
+    var timeOutInterval: TimeInterval
+    
+    public init(scheme: String, host: String, port: Int? = nil, cachePolicy: URLRequest.CachePolicy = .useProtocolCachePolicy, timeOutInterval: TimeInterval = 10.0) {
+        self.scheme = scheme
+        self.host = host
+        self.port = port
+        self.cachePolicy = cachePolicy
+        self.timeOutInterval = timeOutInterval
+    }
 }
 
 extension RemoteAPI {

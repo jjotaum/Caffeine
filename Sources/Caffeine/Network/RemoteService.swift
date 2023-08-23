@@ -21,9 +21,7 @@ public class BaseRemoteService: RemoteService {
     private let decoder: RequestDecoder
     private let remoteAPI: RemoteAPI
     
-    init(_ coordinator: RequestCoordinator = URLSession.shared,
-         decoder: RequestDecoder = JSONDecoder(),
-         remoteAPI: RemoteAPI) {
+    public init(coordinator: RequestCoordinator = URLSession.shared, decoder: RequestDecoder = JSONDecoder(), remoteAPI: RemoteAPI) {
         self.coordinator = coordinator
         self.decoder = decoder
         self.remoteAPI = remoteAPI

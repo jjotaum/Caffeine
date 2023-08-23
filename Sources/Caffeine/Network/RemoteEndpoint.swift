@@ -12,4 +12,11 @@ public struct RemoteEndpoint {
     let httpMethod: String
     let body: Data?
     let queryItems: [URLQueryItem]
+    
+    public init(path: String, httpMethod: String, body: Data?, queryItems: [URLQueryItem]) {
+        self.path = path
+        self.httpMethod = httpMethod
+        self.body = body
+        self.queryItems = queryItems
+    }
 }

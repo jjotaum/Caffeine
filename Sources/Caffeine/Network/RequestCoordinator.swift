@@ -16,7 +16,7 @@ public protocol RequestDecoder {
 
 extension JSONDecoder: RequestDecoder { }
 
-protocol RequestCoordinator {
+public protocol RequestCoordinator {
     func dataTask<T: Codable>(request: URLRequest, decoder: RequestDecoder, completion: @escaping (RequestResult<T>) -> Void)
     @available(iOS 15.0, *)
     @available(macOS 12.0, *)
@@ -25,7 +25,7 @@ protocol RequestCoordinator {
 }
 
 extension URLSession: RequestCoordinator {
-    func dataTask<T>(request: URLRequest, decoder: RequestDecoder, completion: @escaping (RequestResult<T>) -> Void) where T : Decodable, T : Encodable {
+    public func dataTask<T>(request: URLRequest, decoder: RequestDecoder, completion: @escaping (RequestResult<T>) -> Void) where T : Decodable, T : Encodable {
         dataTask(with: request) { data, response, error in
             if let error = error {
                 completion(.failure(error))
@@ -52,7 +52,7 @@ extension URLSession: RequestCoordinator {
         return try decoder.decode(T.self, from: data.0)
     }
     
-    func dataTaskPublisher<T>(for request: URLRequest, decoder: RequestDecoder) throws -> AnyPublisher<T, Error> where T : Decodable, T : Encodable {
+    public func dataTaskPublisher<T>(for request: URLRequest, decoder: RequestDecoder) throws -> AnyPublisher<T, Error> where T : Decodable, T : Encodable {
         return dataTaskPublisher(for: request)
             .tryMap { try decoder.decode(T.self, from: $0.data) }
             .eraseToAnyPublisher()
