@@ -7,4 +7,10 @@ A collection of reusable logic to boost Apple platform apps development process.
 ### Extensions
 * AdditiveArithmetic
 * Array
-* String 
+* String
+
+## Network
+* RemoteAPI
+* RemoteEndpoint
+* RemoteService
+* RequestCoordinator
