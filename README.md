@@ -9,8 +9,11 @@ A collection of reusable logic to boost Apple platform apps development process.
 * Array
 * String
 
-## Network
+### Network
 * RemoteAPI
 * RemoteEndpoint
 * RemoteService
 * RequestCoordinator
+
+### Presentation
+* ViewModel
