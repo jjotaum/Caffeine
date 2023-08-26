@@ -9,11 +9,11 @@ import Combine
 import Foundation
 
 public protocol RemoteService {
-    func load<T: Codable>(endpoint: RemoteEndpoint, completion: @escaping (RequestResult<T>) -> Void) throws
+    func load<T: Decodable>(endpoint: RemoteEndpoint, completion: @escaping (RequestResult<T>) -> Void) throws
     @available(iOS 15.0, *)
     @available(macOS 12.0, *)
-    func load<T: Codable>(endpoint: RemoteEndpoint) async throws -> T
-    func load<T: Codable>(endpoint: RemoteEndpoint) throws -> AnyPublisher<T, Error>
+    func load<T: Decodable>(endpoint: RemoteEndpoint) async throws -> T
+    func load<T: Decodable>(endpoint: RemoteEndpoint) throws -> AnyPublisher<T, Error>
 }
 
 public class BaseRemoteService: RemoteService {
@@ -27,19 +27,19 @@ public class BaseRemoteService: RemoteService {
         self.remoteAPI = remoteAPI
     }
     
-    public func load<T: Codable>(endpoint: RemoteEndpoint, completion: @escaping (RequestResult<T>) -> Void) throws {
+    public func load<T: Decodable>(endpoint: RemoteEndpoint, completion: @escaping (RequestResult<T>) -> Void) throws {
         let request = try remoteAPI.urlRequest(endpoint)
         coordinator.dataTask(request: request, decoder: decoder, completion: completion)
     }
     
     @available(iOS 15.0, *)
     @available(macOS 12.0, *)
-    public func load<T>(endpoint: RemoteEndpoint) async throws -> T where T : Decodable, T : Encodable {
+    public func load<T>(endpoint: RemoteEndpoint) async throws -> T where T : Decodable {
         let request = try remoteAPI.urlRequest(endpoint)
         return try await coordinator.data(request: request, decoder: decoder)
     }
     
-    public func load<T: Codable>(endpoint: RemoteEndpoint) throws -> AnyPublisher<T, Error> {
+    public func load<T: Decodable>(endpoint: RemoteEndpoint) throws -> AnyPublisher<T, Error> {
         let request = try remoteAPI.urlRequest(endpoint)
         return try coordinator.dataTaskPublisher(for: request, decoder: decoder)
     }
