@@ -16,4 +16,5 @@ A collection of reusable logic to boost Apple platform apps development process.
 * RequestCoordinator
 
 ### Presentation
+* SystemImage
 * ViewModel
