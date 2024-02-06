@@ -13,7 +13,7 @@ public protocol Storable: Codable {
 }
 
 public extension Storable {
-    func read(_ controller: StorageController = UserDefaults.standard) throws -> Self? {
+    static func read(_ controller: StorageController = UserDefaults.standard, cacheKey: String) throws -> Self? {
         return try controller.read(with: cacheKey)
     }
     
