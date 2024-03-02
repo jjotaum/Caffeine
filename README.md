@@ -10,6 +10,7 @@ A collection of reusable logic to boost Apple platform apps development process.
 ├── Extensions
 │   ├── AdditiveArithmetic+Caffeine.swift
 │   ├── Array+Caffeine.swift
+│   ├── LazyGrids+Caffeine.swift
 │   └── String+Caffeine.swift
 ├── Network
 │   ├── RemoteAPI.swift
