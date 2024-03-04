@@ -1,5 +1,5 @@
 //
-//  Array+Caffeine.swift
+//  Array+Operations.swift
 //  Caffeine
 //
 //  Created by Jota Uribe on 14/07/23.
