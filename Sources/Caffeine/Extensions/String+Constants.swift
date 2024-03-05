@@ -1,5 +1,5 @@
 //
-//  String+Caffeine.swift
+//  String+Constants.swift
 //  Caffeine
 //
 //  Created by Jota Uribe on 14/07/23.
