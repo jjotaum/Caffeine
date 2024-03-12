@@ -22,6 +22,4 @@ A collection of reusable logic to boost Apple platform apps development process.
 │   │   └── AlertStateModifier.swift
 │   ├── SystemImage.swift
 │   └── ViewModel.swift
-├── Protocols
-│   └── Storable.swift
 ```
