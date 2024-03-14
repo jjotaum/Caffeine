@@ -10,12 +10,12 @@ A collection of reusable logic to boost Apple platform apps development process.
 ├── Controllers
 │   └── StorageController.swift
 ├── Extensions
-│   ├── AdditiveArithmetic+Caffeine.swift
-│   ├── Array+Caffeine.swift
+│   ├── AdditiveArithmetic+Constants
+│   ├── Array+Operations.swift
 │   ├── Image+SFSymbol.swift
 │   ├── Label+SFSymbol.swift
-│   ├── LazyGrids+Caffeine.swift
-│   └── String+Caffeine.swift
+│   ├── LazyGrids+Inits.swift
+│   └── String+Constants.swift
 ├── Network
 │   ├── RemoteAPI.swift
 │   ├── RemoteEndpoint.swift
