@@ -23,16 +23,22 @@ public struct ErrorAlertState<Error: LocalizedError>: AlertState {
     }
 }
 
+@available(iOS 15.0, *)
+@available(macOS 12.0, *)
+@available(tvOS 15.0, *)
+@available(watchOS 8.0, *)
 public struct LocalizedAlertState: AlertState {
     public var id: String { "\(title))" }
     let title: LocalizedStringKey
     let cancelationTitle: String
+    let confirmationRole: ButtonRole?
     let confirmationTitle: String
     let confirmationBlock: (() -> Void)?
     
-    public init(title: LocalizedStringKey, cancelationTitle: String = "Cancel", confirmationTitle: String = "Confirm", confirmationBlock: (() -> Void)? = nil) {
+    public init(title: LocalizedStringKey, cancelationTitle: String = "Cancel", confirmationRole: ButtonRole? = nil, confirmationTitle: String = "Confirm", confirmationBlock: (() -> Void)? = nil) {
         self.title = title
         self.cancelationTitle = cancelationTitle
+        self.confirmationRole = confirmationRole
         self.confirmationTitle = confirmationTitle
         self.confirmationBlock = confirmationBlock
     }
@@ -47,7 +53,7 @@ struct LocalizedAlertStateModifier: ViewModifier {
     func body(content: Content) -> some View {
         content.alert(state?.title ?? "", isPresented: .init(get: { state != nil }, set: { _ in  })) {
             Button(role: .cancel, action: { state = nil } , label: { Text(state?.cancelationTitle ?? .empty) })
-            Button(role: .none, action: {
+            Button(role: state?.confirmationRole, action: {
                 state?.confirmationBlock?()
                 state = nil
             } , label: { Text(state?.confirmationTitle ?? .empty) })

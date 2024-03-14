@@ -1,5 +1,5 @@
 //
-//  LazyGrids+Caffeine.swift
+//  LazyGrids+Inits.swift
 //  Caffeine
 //
 //  Created by Jota Uribe on 1/03/24.
