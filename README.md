@@ -5,8 +5,6 @@ A collection of reusable logic to boost Apple platform apps development process.
 ## Contents
 
 ```
-├── Commons
-│   └── SFSymbol.swift
 ├── Controllers
 │   └── StorageController.swift
 ├── Extensions
@@ -22,8 +20,8 @@ A collection of reusable logic to boost Apple platform apps development process.
 │   ├── RemoteService.swift
 │   └── RequestCoordinator.swift
 ├── Presentation
-│   ├── Modifiers
-│   │   └── AlertStateModifier.swift
+│   ├── AlertStateModifier.swift
+│   ├── SFSymbol.swift
 │   ├── SystemImage.swift
 │   └── ViewModel.swift
 ```
