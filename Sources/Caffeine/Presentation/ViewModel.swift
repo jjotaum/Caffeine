@@ -10,11 +10,11 @@ import Foundation
 /// A protocol describing basic structure of viewModels.
 public protocol ViewModel: ObservableObject {
     associatedtype Action
-    func handle(_ action: Action) async
+    func handle(_ action: Action)
 }
 
 public extension ViewModel {
-    func handle(_ action: Action) {
+    func handle(_ action: Action) async {
         Task {
             await handle(action)
         }
