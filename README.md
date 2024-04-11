@@ -8,9 +8,11 @@ A collection of reusable logic to boost Apple platform apps development process.
 ├── Controllers
 │   └── StorageController.swift
 ├── Extensions
-│   ├── AdditiveArithmetic+Constants
+│   ├── AdditiveArithmetic+Constants.swift
 │   ├── Array+Operations.swift
+│   ├── CGFloat+Spacing.swift
 │   ├── Image+SFSymbol.swift
+│   ├── Image+SystemImage.swift
 │   ├── Label+SFSymbol.swift
 │   ├── LazyGrids+Inits.swift
 │   └── String+Constants.swift
@@ -23,5 +25,6 @@ A collection of reusable logic to boost Apple platform apps development process.
 │   ├── AlertStateModifier.swift
 │   ├── SFSymbol.swift
 │   ├── SystemImage.swift
+│   ├── ViewFrameSizeModifier.swift
 │   └── ViewModel.swift
 ```
