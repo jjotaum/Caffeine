@@ -15,4 +15,6 @@ public extension AdditiveArithmetic where Self : ExpressibleByIntegerLiteral {
 
 public extension AdditiveArithmetic where Self : ExpressibleByFloatLiteral {
     @inlinable static var oneHalf: Self { 0.5 }
+    /// Default animation duration (0.35)
+    @inlinable static var defaultAnimationDuration: Self { 0.35 }
 }
