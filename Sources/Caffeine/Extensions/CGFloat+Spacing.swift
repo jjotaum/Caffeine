@@ -7,7 +7,7 @@
 
 import struct CoreGraphics.CGFloat
 
-extension CGFloat {
+public extension CGFloat {
     /// 4
     static var xSmall: Self = 4
     /// 8
