@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension Label where Title == Text, Icon == Image {
+public extension Label where Title == Text, Icon == Image {
     init(_ titleKey: LocalizedStringKey, symbol: SFSymbol) {
         self.init(titleKey, systemImage: symbol.systemImage)
     }
