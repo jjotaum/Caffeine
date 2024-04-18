@@ -30,14 +30,26 @@ public struct ErrorAlertState<Error: LocalizedError>: AlertState {
 public struct LocalizedAlertState: AlertState {
     public var id: String { "\(title))" }
     let title: LocalizedStringKey
+    let cancelationRole: ButtonRole?
     let cancelationTitle: String
+    let cancelationBlock: (() -> Void)?
     let confirmationRole: ButtonRole?
     let confirmationTitle: String
     let confirmationBlock: (() -> Void)?
     
-    public init(title: LocalizedStringKey, cancelationTitle: String = "Cancel", confirmationRole: ButtonRole? = nil, confirmationTitle: String = "Confirm", confirmationBlock: (() -> Void)? = nil) {
+    public init(
+        title: LocalizedStringKey,
+        cancelationRole: ButtonRole? = nil,
+        cancelationTitle: String = "Cancel",
+        cancelationBlock: (() -> Void)? = nil,
+        confirmationRole: ButtonRole? = nil,
+        confirmationTitle: String = "Confirm",
+        confirmationBlock: (() -> Void)? = nil
+    ) {
         self.title = title
+        self.cancelationRole = cancelationRole
         self.cancelationTitle = cancelationTitle
+        self.cancelationBlock = cancelationBlock
         self.confirmationRole = confirmationRole
         self.confirmationTitle = confirmationTitle
         self.confirmationBlock = confirmationBlock
@@ -52,7 +64,10 @@ struct LocalizedAlertStateModifier: ViewModifier {
     @Binding var state: LocalizedAlertState?
     func body(content: Content) -> some View {
         content.alert(state?.title ?? "", isPresented: .init(get: { state != nil }, set: { _ in  })) {
-            Button(role: .cancel, action: { state = nil } , label: { Text(state?.cancelationTitle ?? .empty) })
+            Button(role: state?.cancelationRole ?? .cancel, action: {
+                state?.cancelationBlock?()
+                state = nil
+            } , label: { Text(state?.cancelationTitle ?? .empty) })
             Button(role: state?.confirmationRole, action: {
                 state?.confirmationBlock?()
                 state = nil
