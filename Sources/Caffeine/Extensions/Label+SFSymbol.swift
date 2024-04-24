@@ -8,6 +8,11 @@
 import SwiftUI
 
 public extension Label where Title == Text, Icon == Image {
+    @available(iOS 16, *)
+    init(_ localizedString: LocalizedStringResource, symbol: SFSymbol) {
+        self.init(localizedString.key, systemImage: symbol.systemImage)
+    }
+    
     init(_ titleKey: LocalizedStringKey, symbol: SFSymbol) {
         self.init(titleKey, systemImage: symbol.systemImage)
     }
