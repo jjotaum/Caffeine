@@ -6,7 +6,7 @@ A collection of reusable logic to boost Apple platform apps development process.
 
 ```
 ├── Controllers
-│   └── StorageController.swift
+│   └── CacheController.swift
 ├── Extensions
 │   ├── AdditiveArithmetic+Constants.swift
 │   ├── Array+Operations.swift
