@@ -9,6 +9,9 @@ import SwiftUI
 
 public extension Label where Title == Text, Icon == Image {
     @available(iOS 16, *)
+    @available(macOS 13, *)
+    @available(tvOS 16, *)
+    @available(watchOS 9, *)
     init(_ localizedString: LocalizedStringResource, symbol: SFSymbol) {
         self.init(localizedString.key, systemImage: symbol.systemImage)
     }
