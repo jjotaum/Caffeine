@@ -9,6 +9,11 @@ import SwiftUI
 
 public extension Image {
     init(_ symbol: SFSymbol) {
-        self.init(systemName: symbol.systemImage)
+        switch symbol.kind {
+        case .system(let systemName):
+            self.init(systemName: systemName)
+        case .custom(let name):
+            self.init(name)
+        }
     }
 }

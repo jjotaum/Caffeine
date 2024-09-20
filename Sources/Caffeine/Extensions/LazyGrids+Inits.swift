@@ -13,7 +13,7 @@ public extension LazyHGrid {
          alignment: VerticalAlignment = .top,
          spacing: CGFloat = .zero,
          pinnedViews: PinnedScrollableViews = [],
-         content: () -> Content) {
+         @ViewBuilder content: () -> Content) {
         let gridItem: GridItem = .init(size, spacing: spacing, alignment: .top)
         self.init(rows: .init(repeating: gridItem, count: numberOfRows),
                   alignment: alignment,
@@ -29,7 +29,7 @@ public extension LazyVGrid {
          alignment: HorizontalAlignment = .center,
          spacing: CGFloat = .zero,
          pinnedViews: PinnedScrollableViews = [],
-         content: () -> Content) {
+         @ViewBuilder content: () -> Content) {
         let gridItem: GridItem = .init(size, spacing: spacing, alignment: .top)
         self.init(columns: .init(repeating: gridItem, count: numberOfColumns),
                   alignment: alignment,
