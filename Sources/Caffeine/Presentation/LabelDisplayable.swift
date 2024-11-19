@@ -12,7 +12,7 @@ import SwiftUI
 @available(macOS 13, *)
 @available(tvOS 16, *)
 @available(watchOS 9, *)
-protocol LabelDisplayable {
+public protocol LabelDisplayable {
     var localizedValue: LocalizedStringResource { get }
     var symbol: SFSymbol { get }
 }
@@ -21,7 +21,7 @@ protocol LabelDisplayable {
 @available(macOS 13, *)
 @available(tvOS 16, *)
 @available(watchOS 9, *)
-extension LabelDisplayable {
+public extension LabelDisplayable {
     func button(role: ButtonRole? = .none, action: @escaping () -> Void) -> Button<Label<Text, Image>> {
         Button(role: role, action: action, title: localizedValue, symbol: symbol)
     }
