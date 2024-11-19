@@ -1,5 +1,5 @@
 //
-//  CGFloat+Spacing.swift
+//  CGFloat+Constants.swift
 //  Caffeine
 //
 //  Created by Jota Uribe on 11/04/24.
@@ -7,6 +7,7 @@
 
 import struct CoreGraphics.CGFloat
 
+/// Mainly intended for layout spacing
 public extension CGFloat {
     /// 4
     static var xSmall: Self = 4
