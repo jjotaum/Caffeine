@@ -23,10 +23,6 @@ public struct ErrorAlertState<Error: LocalizedError>: AlertState {
     }
 }
 
-@available(iOS 15.0, *)
-@available(macOS 12.0, *)
-@available(tvOS 15.0, *)
-@available(watchOS 8.0, *)
 public struct LocalizedAlertState: AlertState {
     public var id: String { "\(title))" }
     let title: LocalizedStringKey
@@ -56,10 +52,6 @@ public struct LocalizedAlertState: AlertState {
     }
 }
 
-@available(iOS 15.0, *)
-@available(macOS 12.0, *)
-@available(tvOS 15.0, *)
-@available(watchOS 8.0, *)
 struct LocalizedAlertStateModifier: ViewModifier {
     @Binding var state: LocalizedAlertState?
     func body(content: Content) -> some View {
@@ -76,10 +68,6 @@ struct LocalizedAlertStateModifier: ViewModifier {
     }
 }
 
-@available(iOS 15.0, *)
-@available(macOS 12.0, *)
-@available(tvOS 15.0, *)
-@available(watchOS 8.0, *)
 struct ErrorAlertStateModifier<Error: LocalizedError>: ViewModifier {
     @Binding var state: ErrorAlertState<Error>?
     
@@ -90,10 +78,6 @@ struct ErrorAlertStateModifier<Error: LocalizedError>: ViewModifier {
     }
 }
 
-@available(iOS 15.0, *)
-@available(macOS 12.0, *)
-@available(tvOS 15.0, *)
-@available(watchOS 8.0, *)
 public extension View {
     func localizedAlert(for state: Binding<LocalizedAlertState?>) -> some View {
         modifier(LocalizedAlertStateModifier(state: state))
