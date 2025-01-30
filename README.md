@@ -6,6 +6,8 @@ A collection of reusable logic to boost Apple platform apps development process.
 
 ```
 ├── Caffeine
+│   ├── Commons
+│   │   └── Setting.swift
 │   ├── Constants
 │   │   ├── AdditiveArithmetic+Constants.swift
 │   │   ├── CGFloat+Constants.swift
