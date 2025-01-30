@@ -18,8 +18,6 @@ extension JSONDecoder: RequestDecoder { }
 
 public protocol RequestCoordinator {
     func dataTask<T: Decodable>(request: URLRequest, decoder: RequestDecoder, completion: @escaping (RequestResult<T>) -> Void)
-    @available(iOS 15.0, *)
-    @available(macOS 12.0, *)
     func data<T: Decodable>(request: URLRequest, decoder: RequestDecoder) async throws -> T
     func dataTaskPublisher<T: Decodable>(for request: URLRequest, decoder: RequestDecoder) throws -> AnyPublisher<T, Error>
 }
@@ -45,8 +43,6 @@ extension URLSession: RequestCoordinator {
         }.resume()
     }
     
-    @available(iOS 15.0, *)
-    @available(macOS 12.0, *)
     public func data<T>(request: URLRequest, decoder: RequestDecoder) async throws -> T where T : Decodable {
         let data: (Data, URLResponse) = try await data(for: request)
         return try decoder.decode(T.self, from: data.0)

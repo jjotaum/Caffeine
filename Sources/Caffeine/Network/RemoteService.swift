@@ -10,8 +10,6 @@ import Foundation
 
 public protocol RemoteService {
     func load<T: Decodable>(endpoint: RemoteEndpoint, completion: @escaping (RequestResult<T>) -> Void) throws
-    @available(iOS 15.0, *)
-    @available(macOS 12.0, *)
     func load<T: Decodable>(endpoint: RemoteEndpoint) async throws -> T
     func load<T: Decodable>(endpoint: RemoteEndpoint) throws -> AnyPublisher<T, Error>
 }
@@ -32,8 +30,6 @@ public class BaseRemoteService: RemoteService {
         coordinator.dataTask(request: request, decoder: decoder, completion: completion)
     }
     
-    @available(iOS 15.0, *)
-    @available(macOS 12.0, *)
     public func load<T>(endpoint: RemoteEndpoint) async throws -> T where T : Decodable {
         let request = try remoteAPI.urlRequest(endpoint)
         return try await coordinator.data(request: request, decoder: decoder)

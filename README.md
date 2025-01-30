@@ -5,26 +5,33 @@ A collection of reusable logic to boost Apple platform apps development process.
 ## Contents
 
 ```
-├── Controllers
-│   └── CacheController.swift
-├── Extensions
-│   ├── AdditiveArithmetic+Constants.swift
-│   ├── Array+Operations.swift
-│   ├── CGFloat+Spacing.swift
-│   ├── Image+SFSymbol.swift
-│   ├── Image+SystemImage.swift
-│   ├── Label+SFSymbol.swift
-│   ├── LazyGrids+Inits.swift
-│   └── String+Constants.swift
-├── Network
-│   ├── RemoteAPI.swift
-│   ├── RemoteEndpoint.swift
-│   ├── RemoteService.swift
-│   └── RequestCoordinator.swift
-├── Presentation
-│   ├── AlertStateModifier.swift
-│   ├── SFSymbol.swift
-│   ├── SystemImage.swift
-│   ├── ViewFrameSizeModifier.swift
-│   └── ViewModel.swift
+├── Caffeine
+│   ├── Commons
+│   │   └── Setting.swift
+│   ├── Constants
+│   │   ├── AdditiveArithmetic+Constants.swift
+│   │   ├── CGFloat+Constants.swift
+│   │   ├── CGSize+Constants.swift
+│   │   └── String+Constants.swift
+│   ├── Controllers
+│   │   └── CacheController.swift
+│   ├── Extensions
+│   │   ├── Array+Operations.swift
+│   │   ├── Button+SFSymbol.swift
+│   │   ├── Image+SFSymbol.swift
+│   │   ├── Image+SystemImage.swift
+│   │   ├── Label+SFSymbol.swift
+│   │   └── LazyGrids+Inits.swift
+│   ├── Network
+│   │   ├── RemoteAPI.swift
+│   │   ├── RemoteEndpoint.swift
+│   │   ├── RemoteService.swift
+│   │   └── RequestCoordinator.swift
+│   ├── Presentation
+│   │   ├── AlertStateModifier.swift
+│   │   ├── LabelDisplayable.swift
+│   │   ├── SFSymbol.swift
+│   │   ├── SystemImage.swift
+│   │   ├── ViewFrameSizeModifier.swift
+│   │   └── ViewModel.swift
 ```
