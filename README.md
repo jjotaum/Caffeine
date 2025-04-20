@@ -17,11 +17,13 @@ A collection of reusable logic to boost Apple platform apps development process.
 │   │   └── CacheController.swift
 │   ├── Extensions
 │   │   ├── Array+Operations.swift
-│   │   ├── Button+SFSymbol.swift
-│   │   ├── Image+SFSymbol.swift
 │   │   ├── Image+SystemImage.swift
-│   │   ├── Label+SFSymbol.swift
-│   │   └── LazyGrids+Inits.swift
+│   │   ├── LazyGrids+Inits.swift
+│   │   ├── SFSymbol
+│   │   │   ├── Button+SFSymbol.swift
+│   │   │   ├── Image+SFSymbol.swift
+│   │   │   └── Label+SFSymbol.swift
+│   │   └── View+Conditional.swift
 │   ├── Network
 │   │   ├── RemoteAPI.swift
 │   │   ├── RemoteEndpoint.swift
@@ -29,6 +31,7 @@ A collection of reusable logic to boost Apple platform apps development process.
 │   │   └── RequestCoordinator.swift
 │   ├── Presentation
 │   │   ├── AlertStateModifier.swift
+│   │   ├── ClippedBordered.swift
 │   │   ├── LabelDisplayable.swift
 │   │   ├── SFSymbol.swift
 │   │   ├── SystemImage.swift
