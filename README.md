@@ -14,7 +14,8 @@ A collection of reusable logic to boost Apple platform apps development process.
 │   │   ├── CGSize+Constants.swift
 │   │   └── String+Constants.swift
 │   ├── Controllers
-│   │   └── CacheController.swift
+│   │   ├── CacheController.swift
+│   │   └── DataController.swift
 │   ├── Extensions
 │   │   ├── Array+Operations.swift
 │   │   ├── Image+SystemImage.swift
