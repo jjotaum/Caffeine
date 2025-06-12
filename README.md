@@ -13,8 +13,6 @@ A collection of reusable logic to boost Apple platform apps development process.
 │   │   ├── CGFloat+Constants.swift
 │   │   ├── CGSize+Constants.swift
 │   │   └── String+Constants.swift
-│   ├── Controllers
-│   │   └── CacheController.swift
 │   ├── Extensions
 │   │   ├── Array+Operations.swift
 │   │   ├── Image+SystemImage.swift
@@ -29,6 +27,9 @@ A collection of reusable logic to boost Apple platform apps development process.
 │   │   ├── RemoteEndpoint.swift
 │   │   ├── RemoteService.swift
 │   │   └── RequestCoordinator.swift
+│   ├── Persistence
+│   │   ├── CacheController.swift
+│   │   └── DataController.swift
 │   ├── Presentation
 │   │   ├── AlertStateModifier.swift
 │   │   ├── ClippedBordered.swift
