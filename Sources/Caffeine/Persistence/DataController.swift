@@ -17,7 +17,6 @@ public class DataController {
     public lazy var container: NSPersistentContainer = {
         let localStoreURL = URL.storeURL(for: localStore.appGroup, databaseName: localStore.databaseName)
         let localStoreDescription = NSPersistentStoreDescription(url: localStoreURL)
-        localStoreDescription.type = localStore.configuration
         
         let cloudStoreURL = URL.storeURL(for: cloudStore.appGroup, databaseName: cloudStore.databaseName)
         let cloudStoreDescription =
@@ -67,9 +66,9 @@ extension DataController {
     public struct Store {
         let appGroup: String
         let databaseName: String
-        let configuration: String
+        let configuration: String?
         
-        public init(appGroup: String, databaseName: String, configuration: String = "Default") {
+        public init(appGroup: String, databaseName: String, configuration: String? = nil) {
             self.appGroup = appGroup
             self.databaseName = databaseName
             self.configuration = configuration
