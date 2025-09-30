@@ -29,11 +29,11 @@ public struct InputAlertModel: AlertModel {
     public let message: LocalizedStringResource?
     public let placeholder: LocalizedStringResource
     public let primaryActionTitle: LocalizedStringResource
+    public let secondaryActionTitle: LocalizedStringResource?
     
     let primaryActionRole: ButtonRole?
-    let primaryActionBlock: (() -> Void)?
+    let primaryActionBlock: ((String) -> Void)?
     let secondaryActionRole: ButtonRole?
-    let secondaryActionTitle: LocalizedStringResource?
     let secondaryActionBlock: (() -> Void)?
     
     public init(
@@ -42,10 +42,10 @@ public struct InputAlertModel: AlertModel {
         placeholder: LocalizedStringResource,
         primaryActionRole: ButtonRole? = nil,
         primaryActionTitle: LocalizedStringResource,
-        primaryActionBlock: (() -> Void)? = nil,
+        primaryActionBlock: ((String) -> Void)? = nil,
         secondaryActionRole: ButtonRole? = nil,
         secondaryActionTitle: LocalizedStringResource? = nil,
-        secondaryActionBlock: (() -> Void)? = nil,
+        secondaryActionBlock: (() -> Void)? = nil
     ) {
         self.title = title
         self.message = message
@@ -109,7 +109,7 @@ struct InputAlertModifier: ViewModifier {
     @State var text: String = .empty
     
     func body(content: Content) -> some View {
-        content.alert(model?.primaryActionTitle.key ?? .empty, isPresented: .init(get: { model != nil }, set: { _ in })) {
+        content.alert(model?.title ?? "", isPresented: .init(get: { model != nil }, set: { _ in })) {
             TextField(model?.placeholder.key ?? "", text: $text)
             if let secondaryActionTitle = model?.secondaryActionTitle {
                 Button(secondaryActionTitle.key, role: model?.secondaryActionRole ?? .cancel) {
@@ -119,7 +119,7 @@ struct InputAlertModifier: ViewModifier {
             }
             if let primaryActionTitle = model?.primaryActionTitle {
                 Button(primaryActionTitle.key, role: model?.primaryActionRole) {
-                    model?.primaryActionBlock?()
+                    model?.primaryActionBlock?(text)
                     model = nil
                 }
             }
