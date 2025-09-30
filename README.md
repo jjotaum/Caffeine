@@ -31,7 +31,7 @@ A collection of reusable logic to boost Apple platform apps development process.
 │   │   ├── CacheController.swift
 │   │   └── DataController.swift
 │   ├── Presentation
-│   │   ├── AlertStateModifier.swift
+│   │   ├── AlertModifiers.swift
 │   │   ├── ClippedBordered.swift
 │   │   ├── LabelDisplayable.swift
 │   │   ├── SFSymbol.swift
