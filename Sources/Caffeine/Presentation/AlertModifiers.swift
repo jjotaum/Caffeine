@@ -36,7 +36,7 @@ public struct InputAlertModel: AlertModel {
     let secondaryActionTitle: LocalizedStringResource?
     let secondaryActionBlock: (() -> Void)?
     
-    init(
+    public init(
         title: LocalizedStringResource? = nil,
         message: LocalizedStringResource? = nil,
         placeholder: LocalizedStringResource,
