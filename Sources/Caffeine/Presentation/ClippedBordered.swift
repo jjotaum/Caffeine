@@ -21,6 +21,7 @@ public struct ClippedBordered<S>: ViewModifier where S: Shape {
     public func body(content: Content) -> some View {
         content
             .clipShape(shape)
+            .contentShape(shape)
             .overlay {
                 shape.stroke(color, lineWidth: lineWidth)
             }
