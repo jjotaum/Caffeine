@@ -24,7 +24,7 @@ public struct ErrorAlertModel<Error: LocalizedError>: AlertModel {
 }
 
 public struct InputAlertModel: AlertModel {
-    public var id: String { [title, message].compactMap(\.?.key).joined(separator: "_").appending("_\(String(describing: self))") }
+    public var id: String { [title, message, placeholder].compactMap(\.?.key).joined(separator: "_").appending("_\(String(describing: self))") }
     public let title: LocalizedStringResource?
     public let message: LocalizedStringResource?
     public let placeholder: LocalizedStringResource
