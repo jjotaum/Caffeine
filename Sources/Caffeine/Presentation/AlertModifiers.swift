@@ -32,6 +32,7 @@ public struct InputAlertModel: AlertModel {
     public let id: String
     public let title: LocalizedStringResource?
     public let message: LocalizedStringResource?
+    public let placeholder: String?
     public let primaryActionTitle: LocalizedStringResource
     public let secondaryActionTitle: LocalizedStringResource?
     
@@ -44,6 +45,7 @@ public struct InputAlertModel: AlertModel {
         id: String = UUID().uuidString,
         title: LocalizedStringResource? = nil,
         message: LocalizedStringResource? = nil,
+        placeholder: String? = nil,
         primaryActionRole: ButtonRole? = nil,
         primaryActionTitle: LocalizedStringResource,
         primaryActionBlock: ((String) -> Void)? = nil,
@@ -54,6 +56,7 @@ public struct InputAlertModel: AlertModel {
         self.id = id
         self.title = title
         self.message = message
+        self.placeholder = placeholder
         self.primaryActionRole = primaryActionRole
         self.primaryActionTitle = primaryActionTitle
         self.primaryActionBlock = primaryActionBlock
@@ -167,8 +170,8 @@ public extension View {
         modifier(LocalizedAlertModifier(model: model))
     }
     
-    func inputAlert(for model: Binding<InputAlertModel?>, placeholder: String = .empty) -> some View {
-        modifier(InputAlertModifier(model: model, placeholder: placeholder))
+    func inputAlert(for model: Binding<InputAlertModel?>) -> some View {
+        modifier(InputAlertModifier(model: model, placeholder: model.wrappedValue?.placeholder ?? .empty))
     }
     
     func errorAlert<Error: LocalizedError>(for model: Binding<ErrorAlertModel<Error>?>) -> some View {
