@@ -13,18 +13,23 @@ public protocol AlertModel: Identifiable {
 }
 
 public struct ErrorAlertModel<Error: LocalizedError>: AlertModel {
-    public var id: String { "\(error.localizedDescription)" }
-    let error: Error
+    public let id: String
+    public let error: Error
     public let primaryActionTitle: LocalizedStringResource
     
-    public init(error: Error, primaryActionTitle: LocalizedStringResource) {
+    public init(
+        id: String = UUID().uuidString,
+        error: Error,
+        primaryActionTitle: LocalizedStringResource
+    ) {
+        self.id = id
         self.error = error
         self.primaryActionTitle = primaryActionTitle
     }
 }
 
 public struct InputAlertModel: AlertModel {
-    public var id: String { [title, message].compactMap(\.?.key).joined(separator: "_").appending("_\(String(describing: self))") }
+    public let id: String
     public let title: LocalizedStringResource?
     public let message: LocalizedStringResource?
     public let primaryActionTitle: LocalizedStringResource
@@ -36,6 +41,7 @@ public struct InputAlertModel: AlertModel {
     let secondaryActionBlock: (() -> Void)?
     
     public init(
+        id: String = UUID().uuidString,
         title: LocalizedStringResource? = nil,
         message: LocalizedStringResource? = nil,
         primaryActionRole: ButtonRole? = nil,
@@ -45,6 +51,7 @@ public struct InputAlertModel: AlertModel {
         secondaryActionTitle: LocalizedStringResource? = nil,
         secondaryActionBlock: (() -> Void)? = nil
     ) {
+        self.id = id
         self.title = title
         self.message = message
         self.primaryActionRole = primaryActionRole
@@ -57,7 +64,7 @@ public struct InputAlertModel: AlertModel {
 }
 
 public struct LocalizedAlertModel: AlertModel {
-    public var id: String { [title, message].compactMap(\.?.key).joined(separator: "_").appending("_\(String(describing: self))") }
+    public let id: String
     public let title: LocalizedStringResource?
     public let message: LocalizedStringResource?
     public let primaryActionTitle: LocalizedStringResource
@@ -69,6 +76,7 @@ public struct LocalizedAlertModel: AlertModel {
     let secondaryActionBlock: (() -> Void)?
     
     public init(
+        id: String = UUID().uuidString,
         title: LocalizedStringResource? = nil,
         message: LocalizedStringResource? = nil,
         primaryActionRole: ButtonRole? = nil,
@@ -78,6 +86,7 @@ public struct LocalizedAlertModel: AlertModel {
         secondaryActionTitle: LocalizedStringResource? = nil,
         secondaryActionBlock: (() -> Void)? = nil
     ) {
+        self.id = id
         self.title = title
         self.message = message
         self.primaryActionRole = primaryActionRole
