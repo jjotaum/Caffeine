@@ -32,7 +32,6 @@ public struct InputAlertModel: AlertModel {
     public let id: String
     public let title: LocalizedStringResource?
     public let message: LocalizedStringResource?
-    public let placeholder: String?
     public let primaryActionTitle: LocalizedStringResource
     public let secondaryActionTitle: LocalizedStringResource?
     
@@ -45,7 +44,6 @@ public struct InputAlertModel: AlertModel {
         id: String = UUID().uuidString,
         title: LocalizedStringResource? = nil,
         message: LocalizedStringResource? = nil,
-        placeholder: String? = nil,
         primaryActionRole: ButtonRole? = nil,
         primaryActionTitle: LocalizedStringResource,
         primaryActionBlock: ((String) -> Void)? = nil,
@@ -56,7 +54,6 @@ public struct InputAlertModel: AlertModel {
         self.id = id
         self.title = title
         self.message = message
-        self.placeholder = placeholder
         self.primaryActionRole = primaryActionRole
         self.primaryActionTitle = primaryActionTitle
         self.primaryActionBlock = primaryActionBlock
@@ -116,11 +113,10 @@ struct ErrorAlertModifier<Error: LocalizedError>: ViewModifier {
 struct InputAlertModifier: ViewModifier {
     @Binding var model: InputAlertModel?
     @State private var text: String = .empty
-    let placeholder: String
     
     func body(content: Content) -> some View {
         content.alert(model?.title ?? "", isPresented: .init(get: { model != nil }, set: { _ in })) {
-            TextField(placeholder, text: $text)
+            TextField(String.empty, text: $text)
             if let secondaryActionTitle = model?.secondaryActionTitle {
                 Button(secondaryActionTitle.key, role: model?.secondaryActionRole ?? .cancel) {
                     model?.secondaryActionBlock?()
@@ -171,7 +167,7 @@ public extension View {
     }
     
     func inputAlert(for model: Binding<InputAlertModel?>) -> some View {
-        modifier(InputAlertModifier(model: model, placeholder: model.wrappedValue?.placeholder ?? .empty))
+        modifier(InputAlertModifier(model: model))
     }
     
     func errorAlert<Error: LocalizedError>(for model: Binding<ErrorAlertModel<Error>?>) -> some View {
