@@ -32,6 +32,7 @@ public struct InputAlertModel: AlertModel {
     public let id: String
     public let title: LocalizedStringResource?
     public let message: LocalizedStringResource?
+    public let isValueRequired: Bool
     public let primaryActionTitle: LocalizedStringResource
     public let secondaryActionTitle: LocalizedStringResource?
     
@@ -44,6 +45,7 @@ public struct InputAlertModel: AlertModel {
         id: String = UUID().uuidString,
         title: LocalizedStringResource? = nil,
         message: LocalizedStringResource? = nil,
+        isValueRequired: Bool = true,
         primaryActionRole: ButtonRole? = nil,
         primaryActionTitle: LocalizedStringResource,
         primaryActionBlock: ((String) -> Void)? = nil,
@@ -54,6 +56,7 @@ public struct InputAlertModel: AlertModel {
         self.id = id
         self.title = title
         self.message = message
+        self.isValueRequired = isValueRequired
         self.primaryActionRole = primaryActionRole
         self.primaryActionTitle = primaryActionTitle
         self.primaryActionBlock = primaryActionBlock
@@ -127,7 +130,7 @@ struct InputAlertModifier: ViewModifier {
                 Button(primaryActionTitle.key, role: model?.primaryActionRole) {
                     model?.primaryActionBlock?(text)
                     model = nil
-                }
+                }.disabled(model?.isValueRequired ?? false && text.isEmpty)
             }
         } message: {
             if let message = model?.message {
