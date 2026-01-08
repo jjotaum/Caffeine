@@ -31,3 +31,15 @@ extension SFSymbol {
         kind = .custom(imageName: imageName)
     }
 }
+
+extension SFSymbol {
+    /// Returns raw image name for ´SFSymbol´.
+    public var rawValue: String {
+        switch kind {
+        case .system(let systemName):
+            return systemName
+        case .custom(let imageName):
+            return imageName
+        }
+    }
+}
