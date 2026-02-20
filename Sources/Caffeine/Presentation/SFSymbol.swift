@@ -20,6 +20,12 @@ extension SFSymbol {
     }
 }
 
+extension SFSymbol: Equatable {
+    public static func == (lhs: SFSymbol, rhs: SFSymbol) -> Bool {
+        lhs.rawValue == rhs.rawValue
+    }
+}
+
 extension SFSymbol: ExpressibleByStringLiteral {
     public init(stringLiteral value: String) {
         kind = .system(systemName: value)
