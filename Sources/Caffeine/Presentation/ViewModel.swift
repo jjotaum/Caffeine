@@ -8,7 +8,7 @@
 import Foundation
 import Observation
 
-/// Protocol describing basic structure of ´Observable´ View Models.
+/// Protocol describing basic structure of `Observable` View Models.
 @available(iOS 17.0, macOS 14.0, watchOS 10.0, tvOS 17.0, *)
 public protocol ViewModel: Observable {
     associatedtype Action
@@ -19,7 +19,7 @@ public protocol ViewModel: Observable {
 @available(macOS, deprecated: 14.0, message: "Use ViewModel on macOS 14+")
 @available(watchOS, deprecated: 10.0, message: "Use ViewModel on watchOS 10+")
 @available(tvOS, deprecated: 17.0, message: "Use ViewModel on tvOS 17+")
-/// Legacy protocol describing basic structure of ´ObservableObject´ View Models.
+/// Legacy protocol describing basic structure of `ObservableObject` View Models.
 public protocol LegacyViewModel: ObservableObject {
     associatedtype Action
     func handle(_ action: Action)

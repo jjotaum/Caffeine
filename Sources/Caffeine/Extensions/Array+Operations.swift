@@ -8,7 +8,7 @@
 import Foundation
 
 public extension Array {
-    /// Return prefixed array if is ´numberOfItems´ is contained in ´indices´ otherwise return ´self´.
+    /// Return prefixed array if is `numberOfItems` is contained in `indices` otherwise return `self`.
     func prefixed(upTo numberOfItems: Int) -> [Element] {
         guard indices.contains(numberOfItems) else { return self }
         return Array(prefix(upTo: numberOfItems))
