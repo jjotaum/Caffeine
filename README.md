@@ -1,6 +1,6 @@
 # Caffeine
 
-A collection of reusable logic to boost Apple platform apps development process.
+Boost your Apple app development with thoughtfully crafted, reusable utilities.
 
 ## Contents
 
