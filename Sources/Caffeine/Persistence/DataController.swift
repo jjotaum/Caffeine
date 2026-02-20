@@ -8,7 +8,7 @@
 import CoreData
 import Foundation
 
-// Defines convenience ´CoreData´ wrapper class to make easy use of iCloud sync.
+/// Defines convenience `CoreData` wrapper class to make easy use of iCloud sync.
 public class DataController {
     private let localStore: Store
     private let cloudStore: Store
@@ -35,7 +35,7 @@ public class DataController {
         return container
     }()
     
-    /// Accessor to container ´NSManagedObjectContext´ viewContext.
+    /// Accessor to container `NSManagedObjectContext` viewContext.
     public var moc: NSManagedObjectContext {  container.viewContext  }
     
     public init(localStore: Store, cloudStore: Store, cloudContainer: Container) {
@@ -51,7 +51,7 @@ public class DataController {
 }
 
 extension DataController {
-    /// Hold values required to configure ´NSPersistentCloudKitContainer´.
+    /// Hold values required to configure `NSPersistentCloudKitContainer`.
     public struct Container {
         let name: String
         let identifier: String
@@ -62,7 +62,7 @@ extension DataController {
         }
     }
     
-    /// Hold values required to configure ´NSPersistentStoreDescription´.
+    /// Hold values required to configure `NSPersistentStoreDescription`.
     public struct Store {
         let appGroup: String
         let databaseName: String
@@ -77,7 +77,7 @@ extension DataController {
 }
 
 extension URL {
-    /// Returns a URL for the given app group and database pointing to the sqlite database.
+    /// Returns `URL` for the given app group and database pointing to the sqlite database.
     static func storeURL(for appGroup: String, databaseName: String) -> URL {
         guard let fileContainer = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else {
             fatalError("Shared file container could not be created.")

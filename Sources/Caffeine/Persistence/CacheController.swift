@@ -7,7 +7,7 @@
 
 import Foundation
 
-// Defines convenience methods to cache ´Codable´ types.
+/// Defines convenience methods to cache `Codable` types.
 public protocol CacheController {
     func read<T>(with key: String) throws -> T? where T: Decodable
     func write<T>(with key: String, value: T) throws where T: Encodable

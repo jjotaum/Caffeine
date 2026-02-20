@@ -7,8 +7,8 @@
 
 import Foundation
 
-/// A custom type defined to facilitate usage of ´SFSymbols´.
-/// Please see ´Image+SFSymbol´ & ´Label+SFSymbol´ extensions for reference on how to use it.
+/// A custom type defined to facilitate usage of `SFSymbols`.
+/// Please see `Image+SFSymbol` & `Label+SFSymbol` extensions for reference on how to use it.
 public struct SFSymbol {
     var kind: Kind
 }
@@ -17,6 +17,12 @@ extension SFSymbol {
     enum Kind {
         case system(systemName: String)
         case custom(imageName: String)
+    }
+}
+
+extension SFSymbol: Equatable {
+    public static func == (lhs: SFSymbol, rhs: SFSymbol) -> Bool {
+        lhs.rawValue == rhs.rawValue
     }
 }
 
@@ -29,5 +35,17 @@ extension SFSymbol: ExpressibleByStringLiteral {
 extension SFSymbol {
     public init(custom imageName: String) {
         kind = .custom(imageName: imageName)
+    }
+}
+
+extension SFSymbol {
+    /// Returns raw image name for `SFSymbol`.
+    public var rawValue: String {
+        switch kind {
+        case .system(let systemName):
+            return systemName
+        case .custom(let imageName):
+            return imageName
+        }
     }
 }

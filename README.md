@@ -1,6 +1,6 @@
 # Caffeine
 
-A collection of reusable logic to boost Apple platform apps development process.
+Boost your Apple app development with thoughtfully crafted, reusable utilities.
 
 ## Contents
 
@@ -31,6 +31,10 @@ A collection of reusable logic to boost Apple platform apps development process.
 │   │   ├── CacheController.swift
 │   │   └── DataController.swift
 │   ├── Presentation
+│   │   ├── AdaptiveViews
+│   │   │   ├── AdaptiveContainer.swift
+│   │   │   ├── AdaptiveSheet.swift
+│   │   │   └── AdaptiveStack.swift
 │   │   ├── AlertModifiers.swift
 │   │   ├── ClippedBordered.swift
 │   │   ├── LabelDisplayable.swift
@@ -39,3 +43,4 @@ A collection of reusable logic to boost Apple platform apps development process.
 │   │   ├── ViewFrameSizeModifier.swift
 │   │   └── ViewModel.swift
 ```
+
