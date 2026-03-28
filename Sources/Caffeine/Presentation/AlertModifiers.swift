@@ -118,7 +118,7 @@ struct InputAlertModifier: ViewModifier {
     @State private var text: String = .empty
     
     func body(content: Content) -> some View {
-        content.alert(model?.title ?? "", isPresented: .init(get: { model != nil }, set: { _ in })) {
+        content.alert(model?.title ?? "", isPresented: .init(get: { model != nil }, set: { isPresented in if !isPresented { text = .empty } })) {
             TextField(String.empty, text: $text)
             if let secondaryActionTitle = model?.secondaryActionTitle {
                 Button(secondaryActionTitle.key, role: model?.secondaryActionRole ?? .cancel) {
