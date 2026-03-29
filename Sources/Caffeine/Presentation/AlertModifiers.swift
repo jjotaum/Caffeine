@@ -32,6 +32,7 @@ public struct InputAlertModel: AlertModel {
     public let id: String
     public let title: LocalizedStringResource?
     public let message: LocalizedStringResource?
+    public let textContentType: UITextContentType?
     public let isValueRequired: Bool
     public let primaryActionTitle: LocalizedStringResource
     public let secondaryActionTitle: LocalizedStringResource?
@@ -45,6 +46,7 @@ public struct InputAlertModel: AlertModel {
         id: String = UUID().uuidString,
         title: LocalizedStringResource? = nil,
         message: LocalizedStringResource? = nil,
+        textContentType: UITextContentType? = nil,
         isValueRequired: Bool = true,
         primaryActionRole: ButtonRole? = nil,
         primaryActionTitle: LocalizedStringResource,
@@ -56,6 +58,7 @@ public struct InputAlertModel: AlertModel {
         self.id = id
         self.title = title
         self.message = message
+        self.textContentType = textContentType
         self.isValueRequired = isValueRequired
         self.primaryActionRole = primaryActionRole
         self.primaryActionTitle = primaryActionTitle
@@ -120,6 +123,7 @@ struct InputAlertModifier: ViewModifier {
     func body(content: Content) -> some View {
         content.alert(model?.title ?? "", isPresented: .init(get: { model != nil }, set: { isPresented in if !isPresented { text = .empty } })) {
             TextField(String.empty, text: $text)
+                .textContentType(model?.textContentType)
             if let secondaryActionTitle = model?.secondaryActionTitle {
                 Button(secondaryActionTitle.key, role: model?.secondaryActionRole ?? .cancel) {
                     model?.secondaryActionBlock?()
