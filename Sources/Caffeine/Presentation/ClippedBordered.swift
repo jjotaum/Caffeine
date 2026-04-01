@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-public struct ClippedBordered<S>: ViewModifier where S: Shape {
+public struct ClippedBordered<S, Style: ShapeStyle>: ViewModifier where S: Shape {
     private let shape: S
-    private let color: Color
+    private let style: Style
     private let lineWidth: CGFloat
     
-    public init(_ shape: S, color: Color, lineWidth: CGFloat) {
+    public init(_ shape: S, style: Style, lineWidth: CGFloat) {
         self.shape = shape
-        self.color = color
+        self.style = style
         self.lineWidth = lineWidth
     }
     
@@ -23,13 +23,13 @@ public struct ClippedBordered<S>: ViewModifier where S: Shape {
             .clipShape(shape)
             .contentShape(shape)
             .overlay {
-                shape.stroke(color, lineWidth: lineWidth)
+                shape.stroke(style, lineWidth: lineWidth)
             }
     }
 }
 
 public extension View {
-    func clippedBordered<S: Shape>(_ shape: S, color: Color, lineWidth: CGFloat = .one) -> some View {
-        modifier(ClippedBordered(shape, color: color, lineWidth: lineWidth))
+    func clippedBordered<S: Shape, Style: ShapeStyle>(_ shape: S, style: Style, lineWidth: CGFloat = .one) -> some View {
+        modifier(ClippedBordered(shape, style: style, lineWidth: lineWidth))
     }
 }
