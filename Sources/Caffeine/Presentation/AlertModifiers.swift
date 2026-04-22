@@ -7,6 +7,20 @@
 
 import SwiftUI
 
+#if canImport(AppKit)
+import AppKit.NSTextContent
+public enum KeyboardType {
+    case `default`
+}
+public typealias TextContentType = NSTextContentType
+#endif
+
+#if canImport(UIKit)
+import UIKit
+public typealias KeyboardType = UIKeyboardType
+public typealias TextContentType = UITextContentType
+#endif
+
 public protocol AlertModel: Identifiable {
     var id: String { get }
     var primaryActionTitle: LocalizedStringResource { get }
@@ -32,6 +46,8 @@ public struct InputAlertModel: AlertModel {
     public let id: String
     public let title: LocalizedStringResource?
     public let message: LocalizedStringResource?
+    public let keyboardType: KeyboardType
+    public let textContentType: TextContentType?
     public let isValueRequired: Bool
     public let primaryActionTitle: LocalizedStringResource
     public let secondaryActionTitle: LocalizedStringResource?
@@ -45,6 +61,8 @@ public struct InputAlertModel: AlertModel {
         id: String = UUID().uuidString,
         title: LocalizedStringResource? = nil,
         message: LocalizedStringResource? = nil,
+        keyboardType: KeyboardType = .default,
+        textContentType: TextContentType? = nil,
         isValueRequired: Bool = true,
         primaryActionRole: ButtonRole? = nil,
         primaryActionTitle: LocalizedStringResource,
@@ -56,6 +74,8 @@ public struct InputAlertModel: AlertModel {
         self.id = id
         self.title = title
         self.message = message
+        self.keyboardType = keyboardType
+        self.textContentType = textContentType
         self.isValueRequired = isValueRequired
         self.primaryActionRole = primaryActionRole
         self.primaryActionTitle = primaryActionTitle
@@ -118,8 +138,12 @@ struct InputAlertModifier: ViewModifier {
     @State private var text: String = .empty
     
     func body(content: Content) -> some View {
-        content.alert(model?.title ?? "", isPresented: .init(get: { model != nil }, set: { _ in })) {
+        content.alert(model?.title ?? "", isPresented: .init(get: { model != nil }, set: { isPresented in if !isPresented { text = .empty } })) {
             TextField(String.empty, text: $text)
+                .textContentType(model?.textContentType)
+#if canImport(UIKit)
+                .keyboardType(model?.keyboardType ?? .default)
+#endif
             if let secondaryActionTitle = model?.secondaryActionTitle {
                 Button(secondaryActionTitle.key, role: model?.secondaryActionRole ?? .cancel) {
                     model?.secondaryActionBlock?()
