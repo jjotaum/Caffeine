@@ -29,6 +29,10 @@ public struct ClippedBordered<S, Style: ShapeStyle>: ViewModifier where S: Shape
 }
 
 public extension View {
+    func clippedBordered<S: Shape>(_ shape: S, color: Color, lineWidth: CGFloat = .one) -> some View {
+        modifier(ClippedBordered(shape, style: color, lineWidth: lineWidth))
+    }
+
     func clippedBordered<S: Shape, Style: ShapeStyle>(_ shape: S, style: Style, lineWidth: CGFloat = .one) -> some View {
         modifier(ClippedBordered(shape, style: style, lineWidth: lineWidth))
     }
