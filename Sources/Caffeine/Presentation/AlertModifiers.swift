@@ -7,18 +7,25 @@
 
 import SwiftUI
 
-#if canImport(AppKit)
+#if os(macOS)
 import AppKit.NSTextContent
+
 public enum KeyboardType {
     case `default`
 }
 public typealias TextContentType = NSTextContentType
-#endif
-
-#if canImport(UIKit)
+#elseif os(iOS) || os(visionOS)
 import UIKit
+
 public typealias KeyboardType = UIKeyboardType
 public typealias TextContentType = UITextContentType
+#elseif os(watchOS)
+import WatchKit
+
+public enum KeyboardType {
+    case `default`
+}
+public typealias TextContentType = WKTextContentType
 #endif
 
 public protocol AlertModel: Identifiable {
@@ -141,7 +148,7 @@ struct InputAlertModifier: ViewModifier {
         content.alert(model?.title ?? "", isPresented: .init(get: { model != nil }, set: { isPresented in if !isPresented { text = .empty } })) {
             TextField(String.empty, text: $text)
                 .textContentType(model?.textContentType)
-#if canImport(UIKit)
+#if os(iOS) || os(visionOS)
                 .keyboardType(model?.keyboardType ?? .default)
 #endif
             if let secondaryActionTitle = model?.secondaryActionTitle {
