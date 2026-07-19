@@ -35,7 +35,7 @@ Add Caffeine to your `Package.swift` dependencies:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/jotaum/Caffeine.git", from: "0.9.3")
+    .package(url: "https://github.com/jotaum/Caffeine.git", from: "0.9.4")
 ]
 ```
 
