@@ -14,11 +14,11 @@ It bundles practical building blocks for SwiftUI presentation, network requests,
 
 ## Platform Support
 
-- iOS 16+
-- macOS 13+
-- tvOS 16+
-- watchOS 9+
+- iOS 17+
+- macOS 14+
+- tvOS 17+
 - visionOS 1+
+- watchOS 10+
 
 ## What's Included
 
@@ -35,7 +35,7 @@ Add Caffeine to your `Package.swift` dependencies:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/jotaum/Caffeine.git", from: "0.9.3")
+    .package(url: "https://github.com/jotaum/Caffeine.git", from: "0.9.4")
 ]
 ```
 

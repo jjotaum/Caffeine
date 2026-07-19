@@ -16,7 +16,7 @@ public struct AdaptiveStack<Content: View>: View {
     private let content: () -> Content
 
     public init(spacing: CGFloat? = nil, hAlignment: HorizontalAlignment = .center, vAlignment: VerticalAlignment = .center, @ViewBuilder content: @escaping () -> Content) {
-        self.spacing = nil
+        self.spacing = spacing
         self.hAlignment = hAlignment
         self.vAlignment = vAlignment
         self.content = content
